@@ -6,8 +6,6 @@ A modern, fast, and secure Markdown editor with real-time preview, built for sta
 
 **Live Demo:** [https://patilk234.github.io/md_web_preview/](https://patilk234.github.io/md_web_preview/)
 
-![Website Preview](https://raw.githubusercontent.com/patilk234/md_web_preview/main/public/preview-screenshot.png) *(Note: Please replace this placeholder with an actual screenshot after deployment)*
-
 ## 🚀 Features
 
 - **Split-Pane Interface:** Edit Markdown on the left, see the rendered HTML on the right.
