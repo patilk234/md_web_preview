@@ -157,6 +157,30 @@ body {
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
   font-size: 85%;
   line-height: 1.45;
+  position: relative; /* Ensure relative for child button */
+}
+
+.copy-code-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 4px 8px;
+  font-size: 12px;
+  background-color: var(--btn-secondary);
+  color: white;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.copy-code-btn:hover {
+  opacity: 1;
+}
+
+.dark-theme .copy-code-btn {
+  background-color: #30363d;
 }
 
 .dark-theme .markdown-body pre {

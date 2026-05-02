@@ -48,9 +48,32 @@ function renderPreview() {
   const cleanHtml = DOMPurify.sanitize(rawHtml);
   previewContainer.innerHTML = cleanHtml;
   
-  // Apply syntax highlighting to code blocks
-  previewContainer.querySelectorAll('pre code').forEach((block) => {
-    hljs.highlightElement(block);
+  // Apply syntax highlighting and add copy buttons to code blocks
+  previewContainer.querySelectorAll('pre').forEach((pre) => {
+    // Ensure pre is relative for button positioning
+    pre.style.position = 'relative';
+
+    const code = pre.querySelector('code');
+    if (code) {
+      hljs.highlightElement(code);
+
+      // Create Copy Button
+      const copyBtn = document.createElement('button');
+      copyBtn.innerText = 'Copy';
+      copyBtn.className = 'copy-code-btn';
+      
+      copyBtn.addEventListener('click', () => {
+        const text = code.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          copyBtn.innerText = 'Copied!';
+          setTimeout(() => {
+            copyBtn.innerText = 'Copy';
+          }, 2000);
+        });
+      });
+
+      pre.appendChild(copyBtn);
+    }
   });
 }
 
