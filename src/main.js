@@ -12,6 +12,8 @@ import html2pdf from 'html2pdf.js';
 const editorContainer = document.querySelector('#editor-container');
 const previewContainer = document.querySelector('#preview-container');
 const previewBtn = document.querySelector('#preview-btn');
+const loadMdBtn = document.querySelector('#load-md-btn');
+const fileInput = document.querySelector('#file-input');
 const downloadMdBtn = document.querySelector('#download-md-btn');
 const copyMdBtn = document.querySelector('#copy-md-btn');
 const copyHtmlBtn = document.querySelector('#copy-html-btn');
@@ -79,6 +81,29 @@ function renderPreview() {
 
 // Event Listeners
 previewBtn.addEventListener('click', renderPreview);
+
+loadMdBtn.addEventListener('click', () => {
+  fileInput.click();
+});
+
+fileInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const content = e.target.result;
+    // Update editor content
+    editor.dispatch({
+      changes: { from: 0, to: editor.state.doc.length, insert: content }
+    });
+    // Immediately render preview
+    renderPreview();
+    // Save to localStorage
+    localStorage.setItem('md_content', content);
+  };
+  reader.readAsText(file);
+});
 
 copyMdBtn.addEventListener('click', () => {
   const content = editor.state.doc.toString();
