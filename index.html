@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdown Editor & Preview</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body class="light-theme">
+    <nav class="navbar">
+      <div class="nav-brand">MD Web Preview</div>
+      <div class="nav-actions">
+        <button id="preview-btn" class="btn primary">Preview</button>
+        <button id="copy-md-btn" class="btn">Copy MD</button>
+        <button id="copy-html-btn" class="btn">Copy HTML</button>
+        <button id="download-md-btn" class="btn">Download .md</button>
+        <button id="export-pdf-btn" class="btn">Export PDF</button>
+        <button id="theme-toggle-btn" class="btn">Toggle Theme</button>
+      </div>
+    </nav>
+    <main class="container">
+      <div id="editor-container" class="pane"></div>
+      <div id="preview-container" class="pane markdown-body">
+        <div id="preview-placeholder" class="placeholder">
+          Click "Preview" to render your Markdown...
+        </div>
+      </div>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
